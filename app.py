@@ -1,5 +1,7 @@
 import numpy as np
 import pickle
+import streamlit as st
+
 
 # Load the trained model
 model = pickle.load(open("AllFeatureHousePriceModel.pkl", "rb"))
