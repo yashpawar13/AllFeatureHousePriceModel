@@ -1,7 +1,15 @@
 import numpy as np
 import pickle
 import streamlit as st
+import importlib.util
+import sys
 
+# Check if xgboost is available before loading the model
+if importlib.util.find_spec("xgboost") is not None:
+    import xgboost  # noqa: F401
+    model = pickle.load(open("AllFeatureHousePriceModel.pkl", "rb"))
+else:
+    sys.exit("❌ xgboost is not installed. Please run: pip install xgboost")
 
 # Load the trained model
 model = pickle.load(open("AllFeatureHousePriceModel.pkl", "rb"))
